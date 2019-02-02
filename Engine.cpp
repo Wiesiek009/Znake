@@ -6,6 +6,7 @@ Engine::Engine()
 
 	m_window.create(sf::VideoMode(800, 600), "Znake ver. 0.0.0.1-ALPHA", sf::Style::Close, m_settings);
 	m_renderer = Renderer(&m_window);
+	m_renderer.pushStatus(&m_status);
 
 	m_renderer.push(m_singleplayer.getHead()->getBody());
 	m_renderer.push(m_singleplayer.getHead()->getLine());
@@ -74,13 +75,25 @@ void Engine::events()
 		if(m_event.type == sf::Event::Closed)
 			m_window.close();
 
-		if(m_event.type == sf::Event::KeyPressed &&  m_event.key.code == sf::Keyboard::Escape)
-			m_window.close();
+		if (m_event.type == sf::Event::KeyPressed &&  m_event.key.code == sf::Keyboard::Escape) 
+		{
+			if(m_status == Status::SINGLEPLAYER)
+				m_status = Status::MENU;
+			else
+				m_window.close();
+		}
+			
 
 		if(m_event.type == sf::Event::KeyPressed && m_event.key.code == sf::Keyboard::P)
 		{
 			std::cout<< "SINGLEPLAYER"<<std::endl;
 			m_status = Status::SINGLEPLAYER;
+		}
+
+		if (m_event.type == sf::Event::KeyPressed && m_event.key.code == sf::Keyboard::Enter)
+		{
+			std::cout << "MENU" << std::endl;
+			m_status = Status::MENU;
 		}
 	}
 }

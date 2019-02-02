@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include  "Player/Head.hpp"
+#include "Status.hpp"
 
 class Renderer
 {
@@ -12,6 +13,8 @@ class Renderer
 		Renderer() = default;
 		Renderer(sf::RenderWindow* window);
 		~Renderer();
+
+		void pushStatus(Status* status);
 
 		void push(sf::CircleShape* body);
 		void push(sf::RectangleShape* body);
@@ -25,5 +28,7 @@ class Renderer
 		std::vector<sf::RectangleShape*> 		m_rBodies;
 		std::vector<std::vector<sf::Vertex>*>	m_tails;
 		sf::RenderWindow*						m_window = nullptr;
+
+		Status*									m_gameStatus;
 
 };

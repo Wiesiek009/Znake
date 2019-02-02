@@ -6,17 +6,7 @@
 #include "Renderer.hpp"
 #include "Game/Singleplayer.hpp"
 #include "Player/Head.hpp"
-
-enum Status
-{
-	MENU = 0,
-	SINGLEPLAYER,
-	MULTIPLAYER_LOBBY,
-	MULTIPLAYER_GAME,
-	OPTIONS,
-	CREDITS,
-	EXIT
-};
+#include "Status.hpp"
 
 class Engine
 {
@@ -40,7 +30,7 @@ class Engine
 		sf::Event 			m_event;
 		Status  			m_status = Status::MENU;
 
-		Singleplayer 	m_singleplayer;
+		Singleplayer 		m_singleplayer;
 
-		float 			m_delta;
+		float 				m_delta;
 };
