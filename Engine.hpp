@@ -2,11 +2,23 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <functional>
 
 #include "Renderer.hpp"
 #include "Game/Singleplayer.hpp"
+#include "Game/Menu/Menu.hpp"
 #include "Player/Head.hpp"
-#include "Status.hpp"
+
+enum Status
+{
+	MENU = 0,
+	SINGLEPLAYER,
+	MULTIPLAYER_LOBBY,
+	MULTIPLAYER_GAME,
+	OPTIONS,
+	CREDITS,
+	EXIT
+};
 
 class Engine
 {
@@ -30,7 +42,8 @@ class Engine
 		sf::Event 			m_event;
 		Status  			m_status = Status::MENU;
 
-		Singleplayer 		m_singleplayer;
+		Singleplayer* 					m_singleplayer;
+		Menu* 							m_menu;
 
-		float 				m_delta;
+		float 							m_delta;
 };

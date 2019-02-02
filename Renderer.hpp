@@ -5,7 +5,6 @@
 #include <iostream>
 
 #include  "Player/Head.hpp"
-#include "Status.hpp"
 
 class Renderer
 {
@@ -14,21 +13,19 @@ class Renderer
 		Renderer(sf::RenderWindow* window);
 		~Renderer();
 
-		void pushStatus(Status* status);
-
 		void push(sf::CircleShape* body);
 		void push(sf::RectangleShape* body);
+		void push(sf::Text* body);
 		void push(std::vector<sf::Vertex>* body);
 		void draw();
 		void clear();
 
 	private:
 
+		std::vector<sf::Text*> 					m_texts;
 		std::vector<sf::CircleShape*> 			m_cBodies;
 		std::vector<sf::RectangleShape*> 		m_rBodies;
 		std::vector<std::vector<sf::Vertex>*>	m_tails;
 		sf::RenderWindow*						m_window = nullptr;
-
-		Status*									m_gameStatus;
 
 };

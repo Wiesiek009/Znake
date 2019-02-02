@@ -8,12 +8,10 @@
 class Singleplayer
 {
 	public:
-		Singleplayer() = default;
+		Singleplayer(Renderer* renderer);
 		~Singleplayer();
 
-		void init(Renderer* renderer);
 		void update(float delta);
-		Head* getHead();
 
 	private:
 		
