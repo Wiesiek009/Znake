@@ -6,6 +6,7 @@
 
 #include "Renderer.hpp"
 #include "Game/Singleplayer.hpp"
+#include "Game/Multiplayer/Multiplayer.hpp"
 #include "Game/Menu/Menu.hpp"
 #include "Player/Head.hpp"
 
@@ -43,6 +44,7 @@ class Engine
 		Status  			m_status = Status::MENU;
 
 		Singleplayer* 					m_singleplayer;
+		Multiplayer* 					m_multiplayer;
 		Menu* 							m_menu;
 
 		float 							m_delta;
