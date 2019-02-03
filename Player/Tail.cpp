@@ -20,26 +20,31 @@ void Tail::update(sf::Vector2f pos, float angle, float radius)
 {
 	sf::Vector2f tmp = sf::Vector2f(0, 0);
 
-		tmp.x = (cos((angle + 270.f) * M_PI / 180.f) * radius);
-		tmp.y = (sin((angle + 270.f) * M_PI / 180.f) * radius);
-		tmp.x += pos.x;
-		tmp.y += pos.y;
+	tmp.x = (cos((angle + 270.f) * M_PI / 180.f) * radius);
+	tmp.y = (sin((angle + 270.f) * M_PI / 180.f) * radius);
+	tmp.x += pos.x;
+	tmp.y += pos.y;
 
-		addPoint(tmp);
+	addPoint(tmp);
 
-		tmp.x = (cos((angle + 90) * M_PI / 180.f) * radius);
-		tmp.y = (sin((angle + 90) * M_PI / 180.f) * radius);
-		tmp.x += pos.x;
-		tmp.y += pos.y;
+	tmp.x = (cos((angle + 90) * M_PI / 180.f) * radius);
+	tmp.y = (sin((angle + 90) * M_PI / 180.f) * radius);
+	tmp.x += pos.x;
+	tmp.y += pos.y;
 
-		addPoint(tmp);
+	addPoint(tmp);
 }
 
 void Tail::addPoint(sf::Vector2f pos)
 {
 	m_points.push_back(sf::Vertex(pos, m_colors[m_curColor]));
 
-	if(m_step % 2 == 1)
+	if (m_points.size() == m_lenght)
+	{
+		m_points.erase(m_points.begin());
+	}
+
+	if(m_step % 8 == 7)
 		m_curColor++;
 
 	m_step++;

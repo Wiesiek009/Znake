@@ -21,6 +21,7 @@ class Tail
 
 		std::vector<sf::Vertex>		m_points;
 
+		int							m_lenght = 55;
 		int							m_curColor = 0;
 		int							m_step = 0;
 		sf::Color					m_colors[7];

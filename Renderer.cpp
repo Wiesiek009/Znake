@@ -35,7 +35,7 @@ void Renderer::draw()
 {
 	for(int i = 0; i < m_tails.size(); i++)
 		if (m_tails[i]->size() != 0)
-			m_window->draw(&m_tails[i]->front(), m_tails[i]->size(), sf::Triangles);
+			m_window->draw(&m_tails[i]->front(), m_tails[i]->size(), sf::TrianglesStrip);
 
 	for(int i = 0; i < m_cBodies.size(); i++)
 		m_window->draw(*m_cBodies[i]);

@@ -5,10 +5,12 @@
 #include <functional>
 
 #include "Renderer.hpp"
+#include "Game/Menu/Menu.hpp"
 #include "Game/Singleplayer.hpp"
 #include "Game/Multiplayer/Multiplayer.hpp"
-#include "Game/Menu/Menu.hpp"
+#include "Game/Credits.hpp"
 #include "Player/Head.hpp"
+#include "Config.hpp"
 
 enum Status
 {
@@ -42,10 +44,13 @@ class Engine
 		sf::Clock 			m_clock;
 		sf::Event 			m_event;
 		Status  			m_status = Status::MENU;
+		Status				m_nextStatus;
 
+		Config							m_config;
+		Menu* 							m_menu;
 		Singleplayer* 					m_singleplayer;
 		Multiplayer* 					m_multiplayer;
-		Menu* 							m_menu;
+		Credits* 						m_credits;
 
 		float 							m_delta;
 };

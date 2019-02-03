@@ -47,7 +47,7 @@ void Head::update(float delta)
 	move(delta);
 
 	m_time += delta;
-	if (m_time > 0.1f)
+	if (m_time > 0.04f)
 	{
 		m_tail.update(m_body.getPosition(), m_angle, m_radius);
 		m_time = 0;

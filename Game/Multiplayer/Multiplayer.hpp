@@ -3,6 +3,7 @@
 #include "SFML/Graphics.hpp"
 
 #include "../../Renderer.hpp"
+#include "Lobby.hpp"
 
 class Multiplayer
 {
@@ -15,5 +16,7 @@ class Multiplayer
 	private:
 
 		Renderer*	m_renderer;
+
+		Lobby		m_lobby;
 
 };
