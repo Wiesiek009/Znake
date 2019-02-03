@@ -17,5 +17,6 @@ class Credits
 		Renderer*				m_renderer;
 
 		sf::Font				m_font;
-		sf::Text				m_text;
+		sf::Text				m_textLeft;
+		sf::Text				m_textRight;
 };
