@@ -7,8 +7,12 @@
 #include "Renderer.hpp"
 #include "Game/Menu/Menu.hpp"
 #include "Game/Singleplayer.hpp"
+<<<<<<< HEAD
 #include "Game/Multiplayer/Multiplayer.hpp"
 #include "Game/Credits.hpp"
+=======
+#include "Game/Menu/Menu.hpp"
+>>>>>>> parent of 1955de6... Multiplayer files init
 #include "Player/Head.hpp"
 #include "Config.hpp"
 
@@ -49,8 +53,12 @@ class Engine
 		Config							m_config;
 		Menu* 							m_menu;
 		Singleplayer* 					m_singleplayer;
+<<<<<<< HEAD
 		Multiplayer* 					m_multiplayer;
 		Credits* 						m_credits;
+=======
+		Menu* 							m_menu;
+>>>>>>> parent of 1955de6... Multiplayer files init
 
 		float 							m_delta;
 };
