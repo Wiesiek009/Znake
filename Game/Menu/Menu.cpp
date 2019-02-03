@@ -31,7 +31,28 @@ void Menu::update(float delta)
 
 }
 
-void Menu::click()
+void Menu::move(sf::Vector2f pos)
 {
+	for (int i = 0; i < 5; i++)
+	{
+		if (m_button[i]->getBody()->getGlobalBounds().contains(pos))
+		{
+			m_button[i]->getBody()->setFillColor(sf::Color::Cyan);
+		}
+		else 
+		{
+			m_button[i]->getBody()->setFillColor(sf::Color::White);
+		}
+	}
+}
 
+void Menu::click(sf::Vector2f pos)
+{
+	for (int i = 0; i < 5; i++)
+	{
+		if(m_button[i]->getBody()->getGlobalBounds().contains(pos))
+		{
+			
+		}
+	}
 }

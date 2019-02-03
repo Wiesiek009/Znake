@@ -15,7 +15,8 @@ class Menu
 		~Menu();
 
 		void update(float delta);
-		void click();
+		void move(sf::Vector2f pos);
+		void click(sf::Vector2f pos);
 
 
 	private:

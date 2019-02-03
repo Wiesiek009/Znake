@@ -88,5 +88,15 @@ void Engine::events()
 			delete m_menu;
 			m_singleplayer = new Singleplayer(&m_renderer);
 		}
+
+		if (m_event.type == sf::Event::MouseButtonPressed && m_event.mouseButton.button == sf::Mouse::Left && m_status == Status::MENU)
+		{
+			m_menu->click(sf::Vector2f(m_event.mouseButton.x, m_event.mouseButton.y));
+		}
+
+		if (m_event.type == sf::Event::MouseMoved && m_status == Status::MENU)
+		{
+			m_menu->move(sf::Vector2f(m_event.mouseMove.x, m_event.mouseMove.y));
+		}
 	}
 }
