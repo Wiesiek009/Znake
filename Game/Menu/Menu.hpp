@@ -6,6 +6,7 @@
 
 #include "../../Renderer.hpp"
 #include "Button.hpp"
+#include "../../Status.hpp"
 
 class Menu 
 {
@@ -16,7 +17,7 @@ class Menu
 
 		void update(float delta);
 		void move(sf::Vector2f pos);
-		void click(sf::Vector2f pos);
+		void click(sf::Vector2f pos, Status* next);
 
 
 	private:

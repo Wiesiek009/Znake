@@ -10,18 +10,8 @@
 #include "Game/Multiplayer/Multiplayer.hpp"
 #include "Game/Credits.hpp"
 #include "Player/Head.hpp"
+#include "Status.hpp"
 #include "Config.hpp"
-
-enum Status
-{
-	MENU = 0,
-	SINGLEPLAYER,
-	MULTIPLAYER_LOBBY,
-	MULTIPLAYER_GAME,
-	OPTIONS,
-	CREDITS,
-	EXIT
-};
 
 class Engine
 {
@@ -33,6 +23,7 @@ class Engine
 		void start();
 		void render();
 		void events();
+		void checkStatus();
 
 	private:
 
@@ -47,10 +38,11 @@ class Engine
 		Status				m_nextStatus;
 
 		Config							m_config;
-		Menu* 							m_menu;
-		Singleplayer* 					m_singleplayer;
-		Multiplayer* 					m_multiplayer;
-		Credits* 						m_credits;
+
+		Menu* 							m_menu = nullptr;
+		Singleplayer* 					m_singleplayer = nullptr;
+		Multiplayer* 					m_multiplayer = nullptr;
+		Credits* 						m_credits = nullptr;
 
 		float 							m_delta;
 };

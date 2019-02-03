@@ -46,15 +46,18 @@ void Menu::move(sf::Vector2f pos)
 	}
 }
 
-void Menu::click(sf::Vector2f pos)
+void Menu::click(sf::Vector2f pos, Status* next)
 {
 	for (int i = 0; i < 5; i++)
 	{
 		if (m_button[i]->getBody()->getGlobalBounds().contains(pos))
 		{
-
-
-
+			if (i == 0)
+				*next = Status::SINGLEPLAYER;
+			else if (i == 3)
+				*next = Status::CREDITS;
+			else if (i == 4)
+				*next = Status::EXIT;
 		}
 	}
 }

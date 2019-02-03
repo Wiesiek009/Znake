@@ -19,6 +19,7 @@ void Engine::start()
 {
 	while(m_window.isOpen())
 	{
+		checkStatus();
 		events();
 
 		switch(m_status)
@@ -71,45 +72,79 @@ void Engine::events()
 		if(m_event.type == sf::Event::Closed)
 			m_window.close();
 
-		if(m_event.type == sf::Event::KeyPressed &&  m_event.key.code == sf::Keyboard::Escape)
+		if (m_event.type == sf::Event::KeyPressed &&  m_event.key.code == sf::Keyboard::Escape)
+		{
 			if (m_status == Status::SINGLEPLAYER)
-			{
-				m_status = Status::MENU;
-				delete m_singleplayer;
-				m_menu = new Menu(&m_renderer);
-			}
+				m_nextStatus = Status::MENU;
+			
 			else if (m_status == Status::CREDITS)
-			{
-				m_status = Status::MENU;
-				delete m_credits;
-				m_menu = new Menu(&m_renderer);
-			}
-			else 
+				m_nextStatus = Status::MENU;
+
+			else
 				m_window.close();
-
-		if(m_event.type == sf::Event::KeyPressed && m_event.key.code == sf::Keyboard::P && m_status != Status::SINGLEPLAYER)
-		{
-			m_status = Status::SINGLEPLAYER;
-			delete m_menu;
-			m_singleplayer = new Singleplayer(&m_renderer);
 		}
 
-		if (m_event.type == sf::Event::KeyPressed && m_event.key.code == sf::Keyboard::C && m_status == Status::MENU)
-		{
-			m_status = Status::CREDITS;
-			delete m_menu;
-			m_credits = new Credits(&m_renderer);
-		}
+		if(m_event.type == sf::Event::KeyPressed && m_event.key.code == sf::Keyboard::P)
+			m_nextStatus = Status::SINGLEPLAYER;
+
+		if (m_event.type == sf::Event::KeyPressed && m_event.key.code == sf::Keyboard::C)
+			m_nextStatus = Status::CREDITS;
 
 
 		if (m_event.type == sf::Event::MouseButtonPressed && m_event.mouseButton.button == sf::Mouse::Left && m_status == Status::MENU)
 		{
-			m_menu->click(sf::Vector2f(m_event.mouseButton.x, m_event.mouseButton.y));
+			m_menu->click(sf::Vector2f(m_event.mouseButton.x, m_event.mouseButton.y), &m_nextStatus);
 		}
 
 		if (m_event.type == sf::Event::MouseMoved && m_status == Status::MENU)
 		{
 			m_menu->move(sf::Vector2f(m_event.mouseMove.x, m_event.mouseMove.y));
 		}
+	}
+}
+
+void Engine::checkStatus()
+{
+	if (m_status != m_nextStatus)
+	{
+		if (m_nextStatus == Status::SINGLEPLAYER and m_status == Status::MENU)
+		{
+			delete m_menu;
+			m_singleplayer = new Singleplayer(&m_renderer);
+		}
+		else if (m_nextStatus == Status::MULTIPLAYER_LOBBY and m_status == Status::MENU)
+		{
+			delete m_menu;
+			m_multiplayer = new Multiplayer(&m_renderer);
+		}
+		else if (m_nextStatus == Status::MULTIPLAYER_GAME and m_status == Status::MENU)
+		{
+			delete m_menu;
+		}
+		else if (m_nextStatus == Status::CREDITS and m_status == Status::MENU)
+		{
+			delete m_menu;
+			m_credits = new Credits(&m_renderer);
+		}
+		else if (m_nextStatus == Status::OPTIONS and m_status == Status::MENU)
+		{
+			delete m_menu;
+		}
+		else if (m_nextStatus == Status::EXIT and m_status == Status::MENU)
+		{
+			delete m_menu;
+		}
+		else if (m_nextStatus == Status::MENU and m_status != Status::MENU)
+		{
+			if(m_status == Status::SINGLEPLAYER)
+				delete m_singleplayer;
+			if (m_status == Status::MULTIPLAYER_GAME)
+				delete m_multiplayer;
+			if (m_status == Status::CREDITS)
+				delete m_credits;
+
+			m_menu = new Menu(&m_renderer);
+		}
+		m_status = m_nextStatus;
 	}
 }
