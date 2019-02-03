@@ -5,9 +5,10 @@
 #include <functional>
 
 #include "Renderer.hpp"
+#include "Game/Menu/Menu.hpp"
 #include "Game/Singleplayer.hpp"
 #include "Game/Multiplayer/Multiplayer.hpp"
-#include "Game/Menu/Menu.hpp"
+#include "Game/Credits.hpp"
 #include "Player/Head.hpp"
 
 enum Status
@@ -43,9 +44,10 @@ class Engine
 		sf::Event 			m_event;
 		Status  			m_status = Status::MENU;
 
+		Menu* 							m_menu;
 		Singleplayer* 					m_singleplayer;
 		Multiplayer* 					m_multiplayer;
-		Menu* 							m_menu;
+		Credits* 						m_credits;
 
 		float 							m_delta;
 };
