@@ -110,7 +110,7 @@ void Engine::checkStatus()
 		if (m_nextStatus == Status::SINGLEPLAYER and m_status == Status::MENU)
 		{
 			delete m_menu;
-			m_singleplayer = new Singleplayer(&m_renderer);
+			m_singleplayer = new Singleplayer(&m_renderer, &m_config);
 		}
 		else if (m_nextStatus == Status::MULTIPLAYER_LOBBY and m_status == Status::MENU)
 		{

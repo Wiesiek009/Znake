@@ -6,12 +6,13 @@
 #include <vector>
 
 #include "Tail.hpp"
+#include "../Config.hpp"
 
 class Head
 {
 	public:
 		Head() = default;
-		Head(sf::Vector2f pos);
+		Head(sf::Vector2f pos, Config* config);
 		~Head();
 
 		void move(float delta);

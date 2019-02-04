@@ -4,11 +4,13 @@
 
 #include "../Renderer.hpp"
 #include "../Player/Head.hpp"
+#include "../Config.hpp"
+#include "../Player/Score.hpp"
 
 class Singleplayer
 {
 	public:
-		Singleplayer(Renderer* renderer);
+		Singleplayer(Renderer* renderer, Config* config);
 		~Singleplayer();
 
 		void update(float delta);
@@ -17,5 +19,6 @@ class Singleplayer
 		
 		Renderer*	m_renderer;
 		Head 		m_head;
+		Score* 		m_score;
 		
 };

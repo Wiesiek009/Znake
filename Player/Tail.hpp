@@ -2,8 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
-
-constexpr auto M_PI = 3.14159265359f;
+#include <cmath>
 
 // red (255, 0, 0), orange (255, 127, 0), yellow (255, 255, 0), green (0, 255, 0), blue (0, 0, 255), indigo(‎75, 0, 130), violet(238, 130, 238)
 

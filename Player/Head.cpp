@@ -1,8 +1,8 @@
 #include "Head.hpp"
 
-Head::Head(sf::Vector2f pos)
+Head::Head(sf::Vector2f pos, Config* config)
 {
-	m_radius = 7.f;
+	m_radius = config->m_playerSize;
 	m_angle = 0;
 
 	m_body.setRadius(m_radius);

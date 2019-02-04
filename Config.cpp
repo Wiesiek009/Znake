@@ -33,4 +33,6 @@ void Config::takeValue(float* value, const char* name)
 	m_file >> check;
 	if (check == name)
 		m_file >> *value;
+
+	std::cout << check << " " << *value << std::endl;
 }
