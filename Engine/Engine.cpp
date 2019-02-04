@@ -42,7 +42,7 @@ void Engine::start()
 				break;
 
 			case(Status::CREDITS):
-				m_credits->update(m_delta);
+				m_credits->update(m_delta, &m_nextStatus);
 				break;
 				
 			case(Status::EXIT):
@@ -124,7 +124,7 @@ void Engine::checkStatus()
 		else if (m_nextStatus == Status::CREDITS and m_status == Status::MENU)
 		{
 			delete m_menu;
-			m_credits = new Credits(&m_renderer);
+			m_credits = new Credits(&m_renderer, &m_config);
 		}
 		else if (m_nextStatus == Status::OPTIONS and m_status == Status::MENU)
 		{
