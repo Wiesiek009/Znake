@@ -5,8 +5,8 @@
 #include <time.h>
 #include <cstdlib>
 
-#include "../Renderer.hpp"
-#include "../Config.hpp"
+#include "../Engine/Renderer.hpp"
+#include "../Engine/Config.hpp"
 
 class Score
 {

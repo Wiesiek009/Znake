@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-#include  "Player/Head.hpp"
+#include  "../Player/Head.hpp"
 
 class Renderer
 {

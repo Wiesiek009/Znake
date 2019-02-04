@@ -2,9 +2,9 @@
 
 #include "SFML/Graphics.hpp"
 
-#include "../Renderer.hpp"
+#include "../Engine/Renderer.hpp"
 #include "../Player/Head.hpp"
-#include "../Config.hpp"
+#include "../Engine/Config.hpp"
 #include "../Player/Score.hpp"
 
 class Singleplayer

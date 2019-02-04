@@ -4,9 +4,9 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-#include "../../Renderer.hpp"
+#include "../../Engine/Renderer.hpp"
 #include "Button.hpp"
-#include "../../Status.hpp"
+#include "../../Engine/Status.hpp"
 
 class Menu 
 {
