@@ -54,6 +54,8 @@ void Menu::click(sf::Vector2f pos, Status* next)
 		{
 			if (i == 0)
 				*next = Status::SINGLEPLAYER;
+			else if (i == 2)
+				*next = Status::OPTIONS;
 			else if (i == 3)
 				*next = Status::CREDITS;
 			else if (i == 4)

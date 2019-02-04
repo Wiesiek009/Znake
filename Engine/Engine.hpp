@@ -8,6 +8,7 @@
 #include "../Game/Menu/Menu.hpp"
 #include "../Game/Singleplayer.hpp"
 #include "../Game/Multiplayer/Multiplayer.hpp"
+#include "../Game/Options.hpp"
 #include "../Game/Credits.hpp"
 #include "../Player/Head.hpp"
 #include "Status.hpp"
@@ -42,6 +43,7 @@ class Engine
 		Menu* 							m_menu = nullptr;
 		Singleplayer* 					m_singleplayer = nullptr;
 		Multiplayer* 					m_multiplayer = nullptr;
+		Options*						m_options = nullptr;
 		Credits* 						m_credits = nullptr;
 
 		float 							m_delta;

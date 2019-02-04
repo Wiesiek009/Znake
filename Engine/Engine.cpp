@@ -39,6 +39,7 @@ void Engine::start()
 				break;
 
 			case(Status::OPTIONS):
+				m_options->update(m_delta);
 				break;
 
 			case(Status::CREDITS):
@@ -77,18 +78,15 @@ void Engine::events()
 			if (m_status == Status::SINGLEPLAYER)
 				m_nextStatus = Status::MENU;
 			
+			else if (m_status == Status::OPTIONS)
+				m_nextStatus = Status::MENU;
+
 			else if (m_status == Status::CREDITS)
 				m_nextStatus = Status::MENU;
 
 			else
 				m_window.close();
 		}
-
-		if(m_event.type == sf::Event::KeyPressed && m_event.key.code == sf::Keyboard::P)
-			m_nextStatus = Status::SINGLEPLAYER;
-
-		if (m_event.type == sf::Event::KeyPressed && m_event.key.code == sf::Keyboard::C)
-			m_nextStatus = Status::CREDITS;
 
 
 		if (m_event.type == sf::Event::MouseButtonPressed && m_event.mouseButton.button == sf::Mouse::Left && m_status == Status::MENU)
@@ -129,6 +127,7 @@ void Engine::checkStatus()
 		else if (m_nextStatus == Status::OPTIONS and m_status == Status::MENU)
 		{
 			delete m_menu;
+			m_options = new Options(&m_renderer, &m_config);
 		}
 		else if (m_nextStatus == Status::EXIT and m_status == Status::MENU)
 		{
@@ -140,6 +139,8 @@ void Engine::checkStatus()
 				delete m_singleplayer;
 			if (m_status == Status::MULTIPLAYER_GAME)
 				delete m_multiplayer;
+			if (m_status == Status::OPTIONS)
+				delete m_options;
 			if (m_status == Status::CREDITS)
 				delete m_credits;
 
