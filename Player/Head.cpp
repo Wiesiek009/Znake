@@ -71,6 +71,11 @@ void Head::control(float delta)
 		m_angle = 360.f;
 }
 
+void Head::feed()
+{
+	m_tail.extend();
+}
+
 sf::CircleShape* Head::getBody()
 {
 	return &m_body;
@@ -84,6 +89,11 @@ sf::RectangleShape* Head::getLine()
 sf::RectangleShape* Head::getDirLine()
 {
 	return &m_dirLine;
+}
+
+sf::Vector2f Head::getPosition()
+{
+	return m_body.getPosition();
 }
 
 Tail* Head::getTail()

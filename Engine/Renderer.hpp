@@ -17,6 +17,7 @@ class Renderer
 		void push(sf::RectangleShape* body);
 		void push(sf::Text* body);
 		void push(std::vector<sf::Vertex>* body);
+		std::vector<std::vector<sf::Vertex>*>* get_allTails();
 		void draw();
 		void clear();
 

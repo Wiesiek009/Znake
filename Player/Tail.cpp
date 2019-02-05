@@ -56,6 +56,11 @@ void Tail::addPoint(sf::Vector2f pos)
 	}
 }
 
+void Tail::extend()
+{
+	m_lenght += 12;
+}
+
 std::vector<sf::Vertex>* Tail::getPoints()
 {
 	return &m_points;

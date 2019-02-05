@@ -27,3 +27,8 @@ void Score::randScore()
 
 	m_body.setPosition(pos);
 }
+
+sf::Vector2f Score::getPosition()
+{
+	return m_body.getPosition();
+}

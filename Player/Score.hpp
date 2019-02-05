@@ -16,6 +16,7 @@ class Score
 		~Score();
 
 		void randScore();
+		sf::Vector2f getPosition();
 
 	private:
 

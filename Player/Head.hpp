@@ -18,9 +18,11 @@ class Head
 		void move(float delta);
 		void update(float delta);
 		void control(float delta);
+		void feed();
 		sf::CircleShape* getBody();
 		sf::RectangleShape* getLine();
 		sf::RectangleShape* getDirLine();
+		sf::Vector2f getPosition();
 		Tail* getTail();
 
 	private:

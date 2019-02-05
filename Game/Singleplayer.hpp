@@ -6,6 +6,7 @@
 #include "../Player/Head.hpp"
 #include "../Engine/Config.hpp"
 #include "../Player/Score.hpp"
+#include "../Engine/Collision.hpp"
 
 class Singleplayer
 {
@@ -20,5 +21,5 @@ class Singleplayer
 		Renderer*	m_renderer;
 		Head 		m_head;
 		Score* 		m_score;
-		
+		Collision*	m_collision;
 };

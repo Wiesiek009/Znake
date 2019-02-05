@@ -3,6 +3,7 @@
 Singleplayer::Singleplayer(Renderer* renderer, Config* config)
 {
 	m_renderer = renderer;
+	m_collision = new Collision(config, renderer, m_score);
 	m_head = Head(sf::Vector2f(100, 100), config);
 	m_score = new Score(m_renderer, config);
 
@@ -20,6 +21,7 @@ Singleplayer::~Singleplayer()
 void Singleplayer::update(float delta)
 {
 	m_head.update(delta);
+	m_collision->update();
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 		m_score->randScore();

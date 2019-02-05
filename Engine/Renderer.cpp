@@ -30,6 +30,11 @@ void Renderer::push(std::vector<sf::Vertex>* body)
 	m_tails.push_back(body);
 }
 
+std::vector<std::vector<sf::Vertex>*>* Renderer::get_allTails()
+{
+	return &m_tails;
+}
+
 
 void Renderer::draw()
 {

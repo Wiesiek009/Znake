@@ -17,6 +17,7 @@ class Tail
 
 		void update(sf::Vector2f pos, float angle, float radius);
 		void addPoint(sf::Vector2f pos);
+		void extend();
 		std::vector<sf::Vertex>* getPoints();
 
 	private:
