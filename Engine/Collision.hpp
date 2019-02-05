@@ -17,12 +17,12 @@ class Collision
 		Collision(Config* config, Renderer* renderer, Score* score);
 		~Collision();
 
-		void push(Head* head);
+		void push(std::vector<Head>* heads);
 		float distance(sf::Vector2f pos1, sf::Vector2f pos2);
 		void update();
 	private:
 	
-		std::vector<Head*>		m_heads;
+		std::vector<Head>*		m_heads;
 		Score*					m_score = nullptr;
 		Config*					m_config;
 		Renderer*				m_renderer;

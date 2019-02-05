@@ -10,6 +10,7 @@ Score::Score(Renderer* renderer, Config* config)
 	m_body.setOrigin(m_config->m_playerSize, m_config->m_playerSize);
 	m_body.setFillColor(sf::Color::Green);
 
+	randScore();
 	renderer->push(&m_body);
 }
 

@@ -18,8 +18,8 @@ class Singleplayer
 
 	private:
 		
-		Renderer*	m_renderer;
-		Head 		m_head;
-		Score* 		m_score;
-		Collision*	m_collision;
+		Renderer*				m_renderer;
+		std::vector<Head> 		m_head;
+		Score* 					m_score;
+		Collision*				m_collision;
 };

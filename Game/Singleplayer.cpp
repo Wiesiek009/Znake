@@ -3,14 +3,18 @@
 Singleplayer::Singleplayer(Renderer* renderer, Config* config)
 {
 	m_renderer = renderer;
-	m_collision = new Collision(config, renderer, m_score);
-	m_head = Head(sf::Vector2f(100, 100), config);
+	
+
+	m_head.push_back(Head(sf::Vector2f(100, 100), config));
+	m_renderer->push(m_head[0].getBody());
+	m_renderer->push(m_head[0].getDirLine());
+	m_renderer->push(m_head[0].getTail()->getPoints());
+	m_renderer->push(m_head[0].getTail());
+	
 	m_score = new Score(m_renderer, config);
 
-	m_renderer->push(m_head.getBody());
-	m_renderer->push(m_head.getLine());
-	m_renderer->push(m_head.getDirLine());
-	m_renderer->push(m_head.getTail()->getPoints());
+	m_collision = new Collision(config, renderer, m_score);
+	m_collision->push(&m_head);
 }
 
 Singleplayer::~Singleplayer()
@@ -20,7 +24,8 @@ Singleplayer::~Singleplayer()
 
 void Singleplayer::update(float delta)
 {
-	m_head.update(delta);
+	for(int i = 0; i < m_head.size(); i++)
+		m_head[i].update(delta);
 	m_collision->update();
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))

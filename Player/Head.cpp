@@ -10,11 +10,7 @@ Head::Head(sf::Vector2f pos, Config* config)
 	m_body.setFillColor(sf::Color::Red);
 
 	m_body.setPosition(pos);
-	m_line.setPosition(pos);
 	m_dirLine.setPosition(pos);
-
-	m_line.setSize(sf::Vector2f(2.f, m_radius * 2.f));
-	m_line.setOrigin(m_line.getSize().x / 2.f, m_line.getSize().y / 2.f);
 
 	m_dirLine.setSize(sf::Vector2f(m_radius, 2.f));
 	m_dirLine.setOrigin(0, m_dirLine.getSize().y / 2.f);
@@ -40,7 +36,6 @@ void Head::move(float delta)
 void Head::update(float delta)
 {
 	m_body.setRotation(m_angle);
-	m_line.setRotation(m_angle);
 	m_dirLine.setRotation(m_angle);
 
 	control(delta);
@@ -53,7 +48,6 @@ void Head::update(float delta)
 		m_time = 0;
 	}
 
-	m_line.setPosition(m_body.getPosition());
 	m_dirLine.setPosition(m_body.getPosition());
 }
 
@@ -79,11 +73,6 @@ void Head::feed()
 sf::CircleShape* Head::getBody()
 {
 	return &m_body;
-}
-
-sf::RectangleShape* Head::getLine()
-{
-	return &m_line;
 }
 
 sf::RectangleShape* Head::getDirLine()

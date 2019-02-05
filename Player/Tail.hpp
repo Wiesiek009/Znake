@@ -19,10 +19,12 @@ class Tail
 		void addPoint(sf::Vector2f pos);
 		void extend();
 		std::vector<sf::Vertex>* getPoints();
+		sf::CircleShape* getEnd();
 
 	private:
 
 		std::vector<sf::Vertex>		m_points;
+		sf::CircleShape				m_end;
 
 		int							m_lenght = 55;
 		int							m_curColor = 0;

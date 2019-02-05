@@ -30,6 +30,11 @@ void Renderer::push(std::vector<sf::Vertex>* body)
 	m_tails.push_back(body);
 }
 
+void Renderer::push(Tail* end)
+{
+	m_ends.push_back(end);
+}
+
 std::vector<std::vector<sf::Vertex>*>* Renderer::get_allTails()
 {
 	return &m_tails;
@@ -38,9 +43,12 @@ std::vector<std::vector<sf::Vertex>*>* Renderer::get_allTails()
 
 void Renderer::draw()
 {
+	for (int i = 0; i < m_ends.size(); i++)
+		m_window->draw(*m_ends[i]->getEnd());
+
 	for(int i = 0; i < m_tails.size(); i++)
 		if (m_tails[i]->size() != 0)
-			m_window->draw(&m_tails[i]->front(), m_tails[i]->size(), sf::LinesStrip);
+			m_window->draw(&m_tails[i]->front(), m_tails[i]->size(), sf::TrianglesStrip);
 
 	for(int i = 0; i < m_cBodies.size(); i++)
 		m_window->draw(*m_cBodies[i]);
@@ -58,4 +66,5 @@ void Renderer::clear()
 	m_rBodies.clear();
 	m_tails.clear();
 	m_texts.clear();
+	m_ends.clear();
 }

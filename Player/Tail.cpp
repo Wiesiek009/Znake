@@ -33,6 +33,14 @@ void Tail::update(sf::Vector2f pos, float angle, float radius)
 	tmp.y += pos.y;
 
 	addPoint(tmp);
+
+	if (m_points.size() > 1)
+	{
+		m_end.setRadius(radius);
+		m_end.setOrigin(radius, radius);
+		m_end.setFillColor(m_points[0].color);
+		m_end.setPosition((m_points[0].position.x + m_points[1].position.x) / 2.f, (m_points[0].position.y + m_points[1].position.y) / 2.f);
+	}
 }
 
 void Tail::addPoint(sf::Vector2f pos)
@@ -64,4 +72,9 @@ void Tail::extend()
 std::vector<sf::Vertex>* Tail::getPoints()
 {
 	return &m_points;
+}
+
+sf::CircleShape * Tail::getEnd()
+{
+	return &m_end;
 }

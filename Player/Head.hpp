@@ -20,7 +20,6 @@ class Head
 		void control(float delta);
 		void feed();
 		sf::CircleShape* getBody();
-		sf::RectangleShape* getLine();
 		sf::RectangleShape* getDirLine();
 		sf::Vector2f getPosition();
 		Tail* getTail();
@@ -30,7 +29,6 @@ class Head
 		float 				m_radius;
 		float 				m_angle;
 		sf::CircleShape 	m_body;
-		sf::RectangleShape 	m_line;
 		sf::RectangleShape 	m_dirLine;
 
 		Tail				m_tail;

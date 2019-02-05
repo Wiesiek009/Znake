@@ -11,34 +11,45 @@ Collision::~Collision()
 {
 }
 
-void Collision::push(Head* head)
+void Collision::push(std::vector<Head>* heads)
 {
-	m_heads.push_back(head);
+	m_heads = heads;
 }
 
 float Collision::distance(sf::Vector2f pos1, sf::Vector2f pos2)
 {
-	sf::Vector2f d = pos1 - pos2;
+	sf::Vector2f d = pos2 - pos1;
 	return sqrt(d.x*d.x + d.y*d.y);
 }
 
 void Collision::update()
 {
-	for (int i = 0; i < m_heads.size(); i++)
+	for (int i = 0; i < m_heads->size(); i++)
 	{
-		if (distance(m_score->getPosition(), m_heads[i]->getPosition()))
-			m_heads[i]->feed();
+		if (distance(m_score->getPosition(), m_heads->at(i).getPosition()) <= m_config->m_playerSize * 2.f)
+		{
+			m_heads->at(i).feed();
+			m_score->randScore();
+		}
 
-		for(int j = i + 1; j < m_heads.size(); j++)
-			if(distance(m_heads[i]->getPosition(), m_heads[j]->getPosition()) > m_config->m_playerSize)
+		for (int j = i + 1; j < m_heads->size(); j++)
+			if (distance(m_heads->at(i).getPosition(), m_heads->at(j).getPosition()) <= m_config->m_playerSize * 2.f)
+			{
+				m_heads->erase(m_heads->begin() + i);
+				m_heads->erase(m_heads->begin() + j);
+			}
 
 		for (int j = 0; j < m_renderer->get_allTails()->size(); j++)
 		{
-			for (int k = 6; k < m_renderer->get_allTails()[j].size(); k++)
-			{
-				if (distance(m_heads[i]->getPosition(), m_renderer->get_allTails()->at(j)->at(k).position) > m_config->m_playerSize)
-					std::cout << "COLLISION !!! " << std::endl;
-			}
+			if (m_renderer->get_allTails()->at(j)->size() > 6)
+				for (int k = 2; k < m_renderer->get_allTails()->at(j)->size() - 6; k++)
+				{
+					if (distance(m_heads->at(i).getPosition(), m_renderer->get_allTails()->at(j)->at(k).position) <= m_config->m_playerSize)
+						m_heads->erase(m_heads->begin() + i);
+
+					if (distance(m_score->getPosition(), m_renderer->get_allTails()->at(j)->at(k).position) <= m_config->m_playerSize)
+						m_score->randScore();
+				}
 		}
 	}
 }
