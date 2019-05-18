@@ -1,19 +1,21 @@
 #include "Tail.hpp"
 
-Tail::Tail()
+Tail::Tail(sf::Color color)
 {
-	m_colors[0] = sf::Color(255, 0, 0);
-	m_colors[1] = sf::Color(255, 127, 0);
-	m_colors[2] = sf::Color(255, 255, 0);
-	m_colors[3] = sf::Color(0, 255, 0);
-	m_colors[4] = sf::Color(0, 0, 255);
-	m_colors[5] = sf::Color(75, 0, 130);
-	m_colors[6] = sf::Color(238, 130, 238);
+	m_color = color;
+
+	// m_colors.push_back(sf::Color(255, 0, 0));
+	// m_colors.push_back(sf::Color(255, 127, 0));
+	// m_colors.push_back(sf::Color(255, 255, 0));
+	// m_colors.push_back(sf::Color(0, 255, 0));
+	// m_colors.push_back(sf::Color(0, 0, 255));
+	// m_colors.push_back(sf::Color(75, 0, 130));
+	// m_colors.push_back(sf::Color(238, 130, 238));
 }
 
 Tail::~Tail()
 {
-	
+	m_points.clear();
 }
 
 void Tail::update(sf::Vector2f pos, float angle, float radius)
@@ -45,28 +47,29 @@ void Tail::update(sf::Vector2f pos, float angle, float radius)
 
 void Tail::addPoint(sf::Vector2f pos)
 {
-	m_points.push_back(sf::Vertex(pos, m_colors[m_curColor]));
+	// m_points.push_back(sf::Vertex(pos, m_colors[m_curColor]));
+	m_points.push_back(sf::Vertex(pos, m_color));
 
 	if (m_points.size() == m_lenght)
 	{
 		m_points.erase(m_points.begin());
 	}
 
-	if(m_step % 8 == 7)
-		m_curColor++;
+	// if(m_step % (m_colors.size() + 1) == m_colors.size())
+	// 	m_curColor++;
 
-	m_step++;
+	// m_step++;
 
-	if (m_curColor > 6)
-	{
-		m_curColor = 0;
-		m_step = 0;
-	}
+	// if (m_curColor > m_colors.size() - 1)
+	// {
+	// 	m_curColor = 0;
+	// 	m_step = 0;
+	// }
 }
 
 void Tail::extend()
 {
-	m_lenght += 12;
+	m_lenght += 16;
 }
 
 std::vector<sf::Vertex>* Tail::getPoints()

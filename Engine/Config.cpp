@@ -19,7 +19,13 @@ void Config::load()
 		takeValue(&m_width, "Width:");
 		takeValue(&m_height, "Height:");
 		takeValue(&m_aliasing, "Aliasing:");
+		takeValue(&m_players, "Players:");
+		takeValue(&m_speed, "Speed:");
 		takeValue(&m_playerSize, "PlayerSize:");
+
+		std::string fontName;
+		m_file >> fontName;
+		m_font.loadFromFile(fontName);
 	}
 }
 

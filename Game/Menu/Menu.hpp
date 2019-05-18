@@ -12,7 +12,7 @@ class Menu
 {
 
 	public:
-		Menu(Renderer* renderer);
+		Menu(Renderer* renderer, Config* config);
 		~Menu();
 
 		void update(float delta);
@@ -22,6 +22,7 @@ class Menu
 
 	private:
 		Renderer*				m_renderer;
+		Config* 				m_config;
 
 		sf::Font				m_font;
 

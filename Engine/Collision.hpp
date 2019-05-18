@@ -23,6 +23,9 @@ class Collision
 	private:
 	
 		std::vector<Head>*		m_heads;
+		std::vector<Tail*> 		m_tails;
+		std::vector<short> 		m_erase;
+		
 		Score*					m_score = nullptr;
 		Config*					m_config;
 		Renderer*				m_renderer;

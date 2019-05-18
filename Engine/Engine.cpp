@@ -4,10 +4,12 @@ Engine::Engine()
 {
 	m_config.load();
 	m_settings.antialiasingLevel = m_config.m_aliasing;
+	m_settings.majorVersion = 3;
+	m_settings.minorVersion = 0;
 	m_window.create(sf::VideoMode(m_config.m_width, m_config.m_height), "Znake ver. 0.0.0.1-ALPHA", sf::Style::Close, m_settings);
 	m_renderer = Renderer(&m_window);
 	
-	m_menu = new Menu(&m_renderer);
+	m_menu = new Menu(&m_renderer, &m_config);
 }
 
 Engine::~Engine()
@@ -29,7 +31,7 @@ void Engine::start()
 				break;
 
 			case(Status::SINGLEPLAYER):
-				m_singleplayer->update(m_delta);
+				m_singleplayer->update(m_delta, &m_pause);
 				break;
 
 			case(Status::MULTIPLAYER_LOBBY):
@@ -54,6 +56,9 @@ void Engine::start()
 		render();
 
 		m_delta = m_clock.restart().asSeconds();
+
+		if(m_pause)
+			m_delta = 0;
 	}
 }
 
@@ -97,6 +102,19 @@ void Engine::events()
 		if (m_event.type == sf::Event::MouseMoved && m_status == Status::MENU)
 		{
 			m_menu->move(sf::Vector2f(m_event.mouseMove.x, m_event.mouseMove.y));
+		}
+
+		if (m_event.type == sf::Event::MouseButtonPressed && m_event.mouseButton.button == sf::Mouse::Middle)
+		{
+			std::cout << "Mysz: " << m_event.mouseButton.x << " --- " << m_event.mouseButton.y << std::endl;
+		}
+
+		if(m_event.type == sf::Event::KeyPressed &&  m_event.key.code == sf::Keyboard::Space)
+		{
+			if(m_pause)
+				m_pause = false;
+			else
+				m_pause = true;
 		}
 	}
 }
@@ -144,7 +162,7 @@ void Engine::checkStatus()
 			if (m_status == Status::CREDITS)
 				delete m_credits;
 
-			m_menu = new Menu(&m_renderer);
+			m_menu = new Menu(&m_renderer, &m_config);
 		}
 		m_status = m_nextStatus;
 	}

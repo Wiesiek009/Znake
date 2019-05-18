@@ -6,6 +6,7 @@
 
 #include "../Player/Head.hpp"
 #include "../Player/Tail.hpp"
+#include "../Player/Turbo.hpp"
 
 class Renderer
 {
@@ -14,22 +15,24 @@ class Renderer
 		Renderer(sf::RenderWindow* window);
 		~Renderer();
 
-		void push(sf::CircleShape* body);
 		void push(sf::RectangleShape* body);
+		void push(sf::CircleShape* body);
 		void push(sf::Text* body);
-		void push(std::vector<sf::Vertex>* body);
-		void push(Tail* end);
-		std::vector<std::vector<sf::Vertex>*>* get_allTails();
+		void push(std::vector<Head>* heads);
 		void draw();
 		void clear();
 
+
+		std::vector<Head>* getHeads();
+		void clearTexts();
+
+		
 	private:
 
+		std::vector<Head>* 						m_heads = nullptr;
 		std::vector<sf::Text*> 					m_texts;
 		std::vector<sf::CircleShape*> 			m_cBodies;
 		std::vector<sf::RectangleShape*> 		m_rBodies;
-		std::vector<std::vector<sf::Vertex>*>	m_tails;
-		std::vector<Tail*>						m_ends;
 		sf::RenderWindow*						m_window = nullptr;
 
 };

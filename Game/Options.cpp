@@ -21,4 +21,5 @@ Options::~Options()
 
 void Options::update(float delta)
 {
+	
 }

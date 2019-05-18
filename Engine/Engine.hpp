@@ -47,4 +47,5 @@ class Engine
 		Credits* 						m_credits = nullptr;
 
 		float 							m_delta;
+		bool 							m_pause = true;
 };
