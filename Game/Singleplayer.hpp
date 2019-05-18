@@ -7,6 +7,7 @@
 #include "../Engine/Config.hpp"
 #include "../Player/Score.hpp"
 #include "../Engine/Collision.hpp"
+#include "Singleplayer/Scoreboard.hpp"
 
 enum Phase
 {
@@ -28,6 +29,7 @@ class Singleplayer
 		
 		Renderer*				m_renderer;
 		Config*					m_config;
+		Scoreboard*				m_scoreboard;
 		std::vector<Head> 		m_head;
 		Score* 					m_score;
 		Collision*				m_collision;

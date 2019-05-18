@@ -12,6 +12,7 @@ Singleplayer::Singleplayer(Renderer* renderer, Config* config)
 	m_renderer->push(&m_text);
 	m_score = new Score(m_renderer, m_config);
 
+	m_scoreboard = new Scoreboard(m_renderer, m_config);
 }
 
 Singleplayer::~Singleplayer()
@@ -50,9 +51,9 @@ void Singleplayer::update(float delta, bool* pause)
 				
 			if(m_head.size() < 2)
 			{
-				std::string shit("Wygral gracz nr. ");
-				shit += std::to_string(m_head[0].getId() + 1);
-				m_text.setString(shit);
+
+				m_scoreboard->addScore(m_head[0].getId());
+				m_scoreboard->drawTable(m_head[0].getId());
 
 			 	m_phase = Phase::SCOREBOARD;
 			}
@@ -65,6 +66,7 @@ void Singleplayer::update(float delta, bool* pause)
 			{
 				m_phase = Phase::CLEAR;
 				m_text.setString("");
+				m_scoreboard->remvTable();
 			}
 			
 			break;
