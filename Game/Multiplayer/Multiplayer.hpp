@@ -8,7 +8,6 @@
 class Multiplayer
 {
 	public:
-		Multiplayer() = default;
 		Multiplayer(Renderer* renderer);
 		~Multiplayer();
 
