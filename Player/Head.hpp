@@ -28,6 +28,7 @@ class Head
 		Tail* getTail();
 		Turbo* getTurbo();
 		short getId();
+		std::string getName();
 
 
 	private:

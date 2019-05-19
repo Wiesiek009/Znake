@@ -159,3 +159,8 @@ short Head::getId()
 {
 	return m_id;
 }
+
+std::string Head::getName()
+{
+	return m_name;
+}
