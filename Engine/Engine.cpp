@@ -104,6 +104,11 @@ void Engine::events()
 			m_menu->move(sf::Vector2f(m_event.mouseMove.x, m_event.mouseMove.y));
 		}
 
+		if (m_event.type == sf::Event::KeyPressed && m_status == Status::MENU)
+		{
+			m_menu->keyPress(m_event.key.code, &m_nextStatus);
+		}
+
 		if (m_event.type == sf::Event::MouseButtonPressed && m_event.mouseButton.button == sf::Mouse::Middle)
 		{
 			std::cout << "Mysz: " << m_event.mouseButton.x << " --- " << m_event.mouseButton.y << std::endl;

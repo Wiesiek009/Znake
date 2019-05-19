@@ -27,7 +27,18 @@ Menu::~Menu()
 
 void Menu::update(float delta)
 {
+}
 
+void Menu::keyPress(sf::Keyboard::Key code, Status* next)
+{
+	if (code == sf::Keyboard::S)
+		* next = Status::SINGLEPLAYER;
+	if (code == sf::Keyboard::O)
+		* next = Status::OPTIONS;
+	if (code == sf::Keyboard::C)
+		* next = Status::CREDITS;
+	if (code == sf::Keyboard::E)
+		* next = Status::EXIT;
 }
 
 void Menu::move(sf::Vector2f pos)

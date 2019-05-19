@@ -16,6 +16,7 @@ class Menu
 		~Menu();
 
 		void update(float delta);
+		void keyPress(sf::Keyboard::Key code, Status* next);
 		void move(sf::Vector2f pos);
 		void click(sf::Vector2f pos, Status* next);
 
