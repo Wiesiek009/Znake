@@ -33,6 +33,10 @@ void Singleplayer::update(float delta, bool* pause)
 			if(m_config->m_players > 3)				
 				m_head.push_back(Head(m_config, 315, 3));
 
+			for (int i = 0; i < m_head.size(); i++)
+				m_scoreboard->setName(i, m_head[i].getName());
+
+
 			m_collision = new Collision(m_config, m_renderer, m_score);
 			m_score->randScore();
 

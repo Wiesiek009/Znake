@@ -14,6 +14,7 @@ class Scoreboard
 		void drawTable(int winID);
 		void remvTable();
 
+		void setName(int id, std::string name);
 		void addScore(int id);
 		int getScore(int id);
 		void resetScores();
@@ -24,6 +25,9 @@ class Scoreboard
 		Config*				m_config;
 
 		int					m_punctation[4];
+		std::string			m_names[4];
 
-		sf::Text			m_text;
+		sf::Text			m_text1;
+		sf::Text			m_text2;
+		sf::Text			m_text3;
 };
