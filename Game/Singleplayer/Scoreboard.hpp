@@ -8,13 +8,14 @@
 class Scoreboard
 {
 	public:
+		Scoreboard() = default;
 		Scoreboard(Renderer* renderer, Config* config);
-		~Scoreboard();
+		~Scoreboard() = default;
 
 		void drawTable(int winID);
 		void remvTable();
 
-		void setName(int id, std::string name);
+		void setName(int id, std::string name, sf::Color color);
 		void addScore(int id);
 		int getScore(int id);
 		void resetScores();

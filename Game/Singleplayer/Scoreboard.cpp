@@ -10,7 +10,7 @@ Scoreboard::Scoreboard(Renderer* renderer, Config* config)
 
 	m_text1.setCharacterSize(50);
 	m_text1.setStyle(sf::Text::Bold);
-	m_text1.setLetterSpacing(2);
+	//m_text1.setLetterSpacing(2);
 	m_text1.setFont(m_config->m_font);
 	m_renderer->push(&m_text1);
 
@@ -23,22 +23,16 @@ Scoreboard::Scoreboard(Renderer* renderer, Config* config)
 	m_renderer->push(&m_text3);
 }
 
-Scoreboard::~Scoreboard()
-{
-
-}
-
 void Scoreboard::drawTable(int winID)
 {
-	m_text1.setString("Wygral " + m_names[winID] + "!");
+	if(winID != -1)
+		m_text1.setString("Wygral " + m_names[winID] + "!");
+	else
+		m_text1.setString("REMIS!");
+	
 	sf::FloatRect rect1 = m_text1.getLocalBounds();
 	m_text1.setOrigin(rect1.left + rect1.width / 2.0f, rect1.top + rect1.height / 2.0f);
 	m_text1.setPosition(sf::Vector2f(m_config->m_width / 2.0f, m_config->m_height / 5.0f));
-
-
-
-
-
 
 	std::string m2("");
 	for (int i = 0; i < m_config->m_players; i++) 
@@ -67,7 +61,7 @@ void Scoreboard::remvTable()
 	m_text3.setString("");
 }
 
-void Scoreboard::setName(int id, std::string name)
+void Scoreboard::setName(int id, std::string name, sf::Color color)
 {
 	if (id > 3 || id < 0)
 		return;

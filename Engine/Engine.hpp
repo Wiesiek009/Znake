@@ -6,7 +6,7 @@
 
 #include "Renderer.hpp"
 #include "../Game/Menu/Menu.hpp"
-#include "../Game/Singleplayer.hpp"
+#include "../Game/Singleplayer/Singleplayer.hpp"
 #include "../Game/Multiplayer/Multiplayer.hpp"
 #include "../Game/Options.hpp"
 #include "../Game/Credits.hpp"
@@ -47,5 +47,5 @@ class Engine
 		Credits* 						m_credits = nullptr;
 
 		float 							m_delta;
-		bool 							m_pause = true;
+		bool 							m_pause = false;
 };

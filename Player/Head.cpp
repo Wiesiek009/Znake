@@ -43,13 +43,14 @@ Head::Head(Config* config, float angle, int id)
 		m_tailColor = sf::Color::Yellow;
 	}
 	m_body.setFillColor(m_tailColor);
+	m_dirLine.setFillColor(sf::Color::White);
 	m_dirLine.setSize(sf::Vector2f(m_radius, 2.f));
 	m_dirLine.setOrigin(0, m_dirLine.getSize().y / 2.f);
 	m_dirLine.setRotation(m_angle);
 
 	m_tail = Tail(m_tailColor);
 	m_tail.update(m_body.getPosition(), m_angle, m_radius);
-	m_turbo = Turbo(m_id, m_config, m_booster);
+	m_turbo = Turbo(m_id, m_config, m_booster, m_tailColor);
 }
 
 Head::~Head()
@@ -163,4 +164,9 @@ short Head::getId()
 std::string Head::getName()
 {
 	return m_name;
+}
+
+sf::Color Head::getColor()
+{
+	return m_tailColor;
 }

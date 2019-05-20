@@ -14,19 +14,23 @@ Credits::Credits(Renderer* renderer, Config* config)
 	m_textRight.setPosition(m_config->m_width * 2 / 4, m_config->m_height + 20);
 
 	m_textLeft.setString(m_textLeft.getString() + "\n" + "Mariusz");
-	m_textRight.setString(m_textRight.getString() + "\n" + "dzban");
+	m_textRight.setString(m_textRight.getString() + "\n" + "To  zalezy");
 
 	m_textLeft.setString(m_textLeft.getString() + "\n" + "Sebastian");
-	m_textRight.setString(m_textRight.getString() + "\n" + "mistrz");
+	m_textRight.setString(m_textRight.getString() + "\n" + "Jebali   mu   mame");
 
 	m_textLeft.setString(m_textLeft.getString() + "\n" + "Lucek");
-	m_textRight.setString(m_textRight.getString() + "\n" + "Programista/Tester");
+	m_textRight.setString(m_textRight.getString() + "\n" + "Tester / Elita / Mistrz");
 
 	m_textLeft.setString(m_textLeft.getString() + "\n" + "Marcin");
-	m_textRight.setString(m_textRight.getString() + "\n" + "Useless");
+	m_textRight.setString(m_textRight.getString() + "\n" + "Useless / Dzban");
 
 	m_textLeft.setString(m_textLeft.getString() + "\n" + "Krzysiu");
-	m_textRight.setString(m_textRight.getString() + "\n" + "Stupid men");
+	m_textRight.setString(m_textRight.getString() + "\n" + "Lokalny   Kebab / Turas");
+
+
+	m_textLeft.setString(m_textLeft.getString() + "\n" + "Norbert");
+	m_textRight.setString(m_textRight.getString() + "\n" + "Dobry   kierowca   aka   rysuje   na   piachu");
 
 	m_renderer->push(&m_textLeft);
 	m_renderer->push(&m_textRight);

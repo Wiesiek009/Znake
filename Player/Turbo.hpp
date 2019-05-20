@@ -9,7 +9,7 @@ class Turbo
 {
 	public:
 		Turbo() = default;
-		Turbo(short id, Config* config, bool* booster);
+		Turbo(short id, Config* config, bool* booster, sf::Color color);
 		~Turbo() = default;
 
 		void control(sf::Keyboard::Key shit, float delta);

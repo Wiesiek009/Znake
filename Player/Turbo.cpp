@@ -1,6 +1,6 @@
 #include "Turbo.hpp"
 
-Turbo::Turbo(short id, Config* config, bool* booster)
+Turbo::Turbo(short id, Config* config, bool* booster, sf::Color color)
 {
 	m_config = config;
 	m_id = id;
@@ -12,8 +12,10 @@ Turbo::Turbo(short id, Config* config, bool* booster)
 	m_body.setOrigin(m_body.getSize().x / 2.f , m_body.getSize().y / 2.f);
 	m_outline.setOrigin(m_outline.getSize().x / 2.f , m_outline.getSize().y / 2.f);
 
-	m_body.setFillColor(sf::Color(0, 255, 0, 200));
-	m_outline.setFillColor(sf::Color(255, 255, 0, 150));
+	color.a = 150;
+	m_body.setFillColor(color);
+	color.a = 30;
+	m_outline.setFillColor(color);
 
 	if(id == 0)
 	{

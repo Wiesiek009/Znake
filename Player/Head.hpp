@@ -29,6 +29,7 @@ class Head
 		Turbo* getTurbo();
 		short getId();
 		std::string getName();
+		sf::Color getColor();
 
 
 	private:
