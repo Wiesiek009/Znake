@@ -1,2 +1,1 @@
-# Znake
-Lite version of SnakeZ
+# Znake-serwer

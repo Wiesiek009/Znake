@@ -1,12 +1,11 @@
-// 30.01.2019r 12:30 czasu lokalnego GMT+1 czasu zimowego (Zaczela sie nasza historia) [Znake]
-
-#include "Engine/Engine.hpp"
+#include "Engine.hpp"
 
 int main()
 {
-	Engine engine;
+	Serwer serwer;
 
-	engine.start();
+	serwer.mainLoop();
 
-	return 0;
+    return 0;
 }
+
