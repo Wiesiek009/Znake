@@ -1,0 +1,12 @@
+#pragma once 
+
+enum Status
+{
+	MENU = 0,
+	SINGLEPLAYER,
+	MULTIPLAYER_LOBBY,
+	MULTIPLAYER_GAME,
+	OPTIONS,
+	CREDITS,
+	EXIT
+};
