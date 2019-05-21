@@ -15,7 +15,7 @@ class Scoreboard
 		void drawTable(int winID);
 		void remvTable();
 
-		void setName(int id, std::string name, sf::Color color);
+		void updateInfo(int id, std::string name, sf::Color color);
 		void addScore(int id);
 		int getScore(int id);
 		void resetScores();
@@ -27,8 +27,9 @@ class Scoreboard
 
 		int					m_punctation[4];
 		std::string			m_names[4];
+		sf::Color			m_colors[4];
 
-		sf::Text			m_text1;
-		sf::Text			m_text2;
-		sf::Text			m_text3;
+		sf::Text			m_textTitle;
+		sf::Text			m_textLeft[4];
+		sf::Text			m_textRight[4];
 };

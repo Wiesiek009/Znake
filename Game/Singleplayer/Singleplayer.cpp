@@ -34,7 +34,7 @@ void Singleplayer::update(float delta, bool* pause)
 				m_head.push_back(Head(m_config, 315, 3));
 
 			for (int i = 0; i < m_head.size(); i++)
-				m_scoreboard->setName(i, m_head[i].getName(), m_head[i].getColor());
+				m_scoreboard->updateInfo(i, m_head[i].getName(), m_head[i].getColor());
 
 
 			m_collision = new Collision(m_config, m_renderer, m_score);
