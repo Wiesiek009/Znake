@@ -10,20 +10,20 @@ Scoreboard::Scoreboard(Renderer* renderer, Config* config)
 
 	m_textTitle.setCharacterSize(50);
 	m_textTitle.setStyle(sf::Text::Bold);
-	m_textTitle.setFont(m_config->m_font);
+	m_textTitle.setFont(m_config->m_font1);
 	m_renderer->push(&m_textTitle);
 
 	for (int i = 0; i < 4; i++)
 	{
 		m_textLeft[i].setCharacterSize(30);
-		m_textLeft[i].setFont(m_config->m_font);
+		m_textLeft[i].setFont(m_config->m_font1);
 		m_renderer->push(&m_textLeft[i]);
 	}
 
 	for (int i = 0; i < 4; i++)
 	{
 		m_textRight[i].setCharacterSize(30);
-		m_textRight[i].setFont(m_config->m_font);
+		m_textRight[i].setFont(m_config->m_font1);
 		m_renderer->push(&m_textRight[i]);
 	}
 }

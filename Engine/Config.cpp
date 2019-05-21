@@ -24,8 +24,8 @@ void Config::load()
 		takeValue(&m_playerSize, "PlayerSize:");
 
 		std::string fontName;
-		m_file >> fontName;
-		m_font.loadFromFile(fontName);
+		takeValue(&fontName, "Font1:");
+		m_font1.loadFromFile(fontName);
 	}
 }
 
@@ -34,6 +34,16 @@ void Config::write()
 }
 
 void Config::takeValue(float* value, const char* name)
+{
+	std::string check;
+	m_file >> check;
+	if (check == name)
+		m_file >> *value;
+
+	std::cout << check << " " << *value << std::endl;
+}
+
+void Config::takeValue(std::string* value, const char* name)
 {
 	std::string check;
 	m_file >> check;

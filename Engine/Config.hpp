@@ -15,6 +15,7 @@ class Config
 		void load();
 		void write();
 		void takeValue(float* value, const char* name);
+		void takeValue(std::string* value, const char* name);
 
 		float			m_width;
 		float			m_height;
@@ -23,7 +24,7 @@ class Config
 		float			m_players;
 		float 			m_speed;
 
-		sf::Font		m_font;
+		sf::Font		m_font1;
 
 	private:
 

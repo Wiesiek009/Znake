@@ -6,7 +6,7 @@ Singleplayer::Singleplayer(Renderer* renderer, Config* config)
 	m_config = config;
 
 	m_text.setCharacterSize(30);
-	m_text.setFont(m_config->m_font);
+	m_text.setFont(m_config->m_font1);
 
 	m_renderer->push(&m_head);
 	m_renderer->push(&m_text);
